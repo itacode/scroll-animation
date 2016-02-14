@@ -1,0 +1,203 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* ===============
+    reset
+    =============== */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+/*font: inherit;*/
+vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main { display: block; }
+body { line-height: 1; }
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after {
+content: '';
+content: none;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+/* ===============
+    normalize
+    =============== */
+audio, canvas, video { display: inline-block; *display: inline;
+ *zoom: 1;
+}
+audio:not([controls]) {
+display: none;
+height: 0;
+}
+[hidden] { display: none; }
+html {
+-ms-text-size-adjust: 100%;
+-webkit-text-size-adjust: 100%;
+}
+sub, sup {
+font-size: 75%;
+line-height: 0;
+position: relative;
+vertical-align: baseline;
+}
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+button, input, select, textarea {
+font-size: 100%;
+margin: 0;
+vertical-align: baseline;
+ *vertical-align: middle;
+}
+button, input { line-height: normal; }
+button, select { text-transform: none; }
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+-webkit-appearance: button;
+cursor: pointer;
+ *overflow: visible;
+}
+button[disabled], html input[disabled] { cursor: default; }
+input[type="checkbox"], input[type="radio"] {
+box-sizing: border-box;
+padding: 0;
+ *height: 13px;
+ *width: 13px;
+}
+input[type="search"] {
+-webkit-appearance: textfield;
+-moz-box-sizing: content-box;
+-webkit-box-sizing: content-box;
+box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+ -webkit-appearance: none;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+ border: 0;
+ padding: 0;
+}
+textarea {
+overflow: auto;
+vertical-align: top;
+}
+/* ===============
+    base
+    =============== */
+html, button, input, select, textarea { color: #222; }
+body {
+font-size: 14px;
+line-height: 1.6;
+font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, sans-serif;
+background-color: #fff;
+}
+::-moz-selection {
+ background: #b3d4fc;
+ text-shadow: none;
+}
+::selection {
+background: #b3d4fc;
+text-shadow: none;
+}
+hr {
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+height: 0;
+}
+hr {
+display: block;
+height: 1px;
+border: 0;
+border-top: 1px solid #ccc;
+margin: 1em 0;
+padding: 0;
+}
+audio, canvas, img, video { vertical-align: middle; }
+textarea { resize: vertical; }
+/* ===============
+    helpers
+    =============== */
+/* image replacement */
+.ir {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: 0;
+    direction: ltr;
+    display: block;
+    overflow: hidden;
+    text-align: left;
+    text-indent: -999em;
+}
+.ir br {
+    display: none;
+}
+.visuallyhidden {
+border: 0;
+clip: rect(0 0 0 0);
+height: 1px;
+margin: -1px;
+overflow: hidden;
+padding: 0;
+position: absolute;
+width: 1px;
+}
+/* clearfix */
+.cf:before, .cf:after {
+content: " ";
+display: table;
+}
+.cf:after { clear: both; }
+.cf { *zoom: 1;
+}
+
+/* ==============================
+    mobile layout
+    ============================== */
+.main_nav_wrap {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+.main_nav {
+	display: table;
+	width: 100%;
+	> a {
+		display: table-cell;
+		width: 33.3333333%;
+		height: 30px;
+		text-align: center;
+		vertical-align: middle;
+		background-color: #A0D1F4;
+		&.active {
+			background-color: #E3E3E3;
+		}
+	}
+}
+.mobi_wrap {
+	margin-top: 60px;
+	border: 10px dashed #18C400;
+}
+.row {
+	height: 600px;
+	border-top: 1px solid #000;
+}
+.to_top {
+	position: fixed;
+	bottom: 20px;
+	right: 0;
+	width: 30px;
+	height: 30px;
+	background-color: #fff;
+}
+
+/* Landscape */
+@media screen and (orientation:landscape) {
+	#main_nav_wrap { /* android4.03 bug fix */
+		width : 100%;
+	}
+}
