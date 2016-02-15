@@ -44,7 +44,10 @@ if (!Object.create) {
 	};
 
 	$(document).ready(function () {
-		var $navButtons = $('.js_nav_btn'),
+		var navWrap = $('#js_nav_wrap'),
+			$navButtons = navWrap.find('.js_nav_btn'),
+			$pagingWrap = $('#js_paging_wrap'),
+			$pagingButtons = $pagingWrap.find('.js_paging_btn'),
 			$sections = $('.js_section'),
 			sectionsOffsets = {},
 			$htmlBody = $('html, body'),
@@ -60,14 +63,20 @@ if (!Object.create) {
 			});
 		}
 		var scrollHandler = function scrollHandler() {
-			var scrtop = $window.scrollTop();
+			var scrtop = $window.scrollTop(),
+				actualOffset = 0,
+				actualId = '';
 			for (var key in sectionsOffsets) {
-				if ((scrtop + navGap >= sectionsOffsets[key]) && (scrtop + navGap - sectionsOffsets[key] < 100)) {
-					$navButtons.removeClass('active').filter('[href="#' + key + '"]').addClass('active');
+				if (scrtop + navGap >= sectionsOffsets[key]) {
+					if (sectionsOffsets[key] >= actualOffset) {
+						actualId = key;
+					}
 				}
 			}
+			$navButtons.removeClass('js_active').filter('[href="#' + actualId + '"]').addClass('js_active');
 		};
 		getSectionsData($sections, sectionsOffsets);
+		$navButtons = $navButtons.add($pagingButtons);
 		$navButtons.on('click', function clickHandler(e) {
 			var toScroll,
 				secId;
@@ -77,7 +86,7 @@ if (!Object.create) {
 			$htmlBody.animate({
 				scrollTop: toScroll - navGap
 			}, 1000, function () {
-				$navButtons.removeClass('active').filter('[href="#' + secId + '"]').addClass('active');
+				$navButtons.removeClass('js_active').filter('[href="#' + secId + '"]').addClass('js_active');
 			});
 		});
 		scrollHandler();
